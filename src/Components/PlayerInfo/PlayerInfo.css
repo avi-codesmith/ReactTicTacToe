@@ -1,0 +1,63 @@
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.player:nth-child(2) {
+  border-left: 2px solid #4dbbe7;
+  padding-left: 2rem;
+}
+
+.player-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: #a0c4ff;
+  transition: 0.3s all;
+}
+
+.player-name {
+  padding: 1rem;
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+  text-align: left;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #cfe0ff;
+  width: 20rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-symbol {
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+.edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 1.2rem !important;
+  font-size: 1.8rem;
+  width: 10rem;
+  border: none;
+  background-color: #4dbbe7;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-right: 2rem;
+  padding: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.edit-btn:hover {
+  scale: 1.1;
+}

@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  user-select: none;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #2c323d 0%, #39414f 50%, #7fe3fc 100%);
+  background-repeat: no-repeat;
+  height: 100vh;
+  color: #4dbbe7;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+header {
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+header img {
+  height: 6rem;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 4.2rem;
+  height: fit-content;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  background-color: #0a0f25;
+  color: #a0c4ff;
+  border-radius: 3rem;
+}
+
+.game-container {
+  display: flex;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #4dbbe7;
+}
+
+.input {
+  background-color: #7fe3fc35 !important;
+}
