@@ -3,7 +3,7 @@
 A simple and interactive **Tic Tac Toe** game built to practice core programming concepts and UI logic. This project demonstrates clean game logic, state management, and a user-friendly interface.
 ---
 
-## [🌐Live demo](https://reactjavascript-tictactoe.netlify.app/)
+## [🌐 Live demo](https://reactjavascript-tictactoe.netlify.app/)
 
 ---
 
