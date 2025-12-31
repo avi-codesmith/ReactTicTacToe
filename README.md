@@ -83,7 +83,7 @@ Just open `index.html` in your browser.
 
 ## 📸 Screenshots
 
-<img width="800" height="500" alt="an" src="https://github.com/user-attachments/assets/0eecf0e3-2420-49be-8ce5-4b81c9426f6f" />
+<img width="700" height="500" alt="an" src="https://github.com/user-attachments/assets/0eecf0e3-2420-49be-8ce5-4b81c9426f6f" />
 
 ---
 
