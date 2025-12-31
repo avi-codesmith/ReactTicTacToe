@@ -83,7 +83,7 @@ Just open `index.html` in your browser.
 
 ## 📸 Screenshots
 
-<img width="1812" height="1386" alt="raec" src="https://github.com/user-attachments/assets/1c556606-629e-42a2-8b8e-5cb99e698265" />
+<img width="1500" height="1200" alt="an" src="https://github.com/user-attachments/assets/0eecf0e3-2420-49be-8ce5-4b81c9426f6f" />
 
 ---
 
