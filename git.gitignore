@@ -1,39 +1,26 @@
-# Node modules
+# dependencies
 node_modules/
 
-# Build output
-dist/
+# production
 build/
+dist/
 
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Environment files
+# environment variables
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# System files
+# logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# cache
+.cache/
+.vscode/
+
+# OS files
 .DS_Store
 Thumbs.db
-
-# IDE folders
-.vscode/
-.idea/
-
-# Temp files
-*.tmp
-*.log
-
-# Coverage reports
-coverage/
-
-# Cache
-.cache/
-.eslintcache/
-.parcel-cache/
