@@ -1,5 +1,6 @@
 # ❌ vs ⭕️ Tic Tac Toe Game⚡
-# made with <img width="80" height="80" alt="download" src="https://github.com/user-attachments/assets/0fd05f04-41ef-495d-b9e2-d092ecc16fb7" /> JS
+
+<img width="100" height="100" alt="React-icon svg" src="https://github.com/user-attachments/assets/cd974c96-a7fa-4358-a308-a5d5f2b12444" />
 
 A simple and interactive **Tic Tac Toe** game built to practice core programming concepts and UI logic. This project demonstrates clean game logic, state management, and a user-friendly interface.
 ---
