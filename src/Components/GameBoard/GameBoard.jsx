@@ -7,20 +7,29 @@ const InitialGameBoard = [
   [null, null, null],
 ];
 
-const [symbol, setSymbol] = useState(InitialGameBoard);
+function GameBoard({ onClickSquare, currPlayer }) {
+  const [gameBoard, setGameBoard] = useState(InitialGameBoard);
 
-function handleSymbol() {
-  setSymbol((prev) => {});
-}
+  function handleGameboard(rowIndex, colIndex) {
+    setGameBoard((prev) => {
+      const updatedGameBoard = [...prev.map((innerItems) => [...innerItems])];
+      if (updatedGameBoard[rowIndex][colIndex] !== null) return prev;
+      updatedGameBoard[rowIndex][colIndex] = currPlayer;
+      return updatedGameBoard;
+    });
 
-function GameBoard() {
+    onClickSquare();
+  }
+
   return (
     <>
-      {InitialGameBoard.map((row, rowIndex) => (
+      {gameBoard.map((row, rowIndex) => (
         <li className="rows" key={rowIndex}>
           {row.map((playerSymbol, colIndex) => (
             <ol key={colIndex} className="columns">
-              <button>{playerSymbol}</button>
+              <button onClick={() => handleGameboard(rowIndex, colIndex)}>
+                {playerSymbol}
+              </button>
             </ol>
           ))}
         </li>
