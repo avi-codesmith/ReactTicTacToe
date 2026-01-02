@@ -1,0 +1,17 @@
+.logContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logContainer ol {
+  margin: 2rem;
+}
+
+.logContainer li {
+  color: #0a0f25;
+  background-color: #4dbbe7;
+  padding: 0.4rem 2rem !important;
+  border-radius: 1rem;
+  margin: 0.4rem;
+}

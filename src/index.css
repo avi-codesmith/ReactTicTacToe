@@ -15,11 +15,16 @@ body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #2c323d 0%, #39414f 50%, #7fe3fc 100%);
   background-repeat: no-repeat;
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   color: #4dbbe7;
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+html::-webkit-scrollbar {
+  display: none;
 }
 
 header {
