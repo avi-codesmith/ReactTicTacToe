@@ -1,20 +1,5 @@
 import "./GameBoard.css";
-
-const InitialGameBoard = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null],
-];
-
-function GameBoard({ onClickSquare, turns }) {
-  let gameBoard = InitialGameBoard;
-
-  for (const turn of turns) {
-    const { square, player } = turn;
-    const { row, col } = square;
-
-    gameBoard[row][col] = player;
-  }
+function GameBoard({ onClickSquare, board }) {
   // const [gameBoard, setGameBoard] = useState(InitialGameBoard);
 
   // function handleGameboard(rowIndex, colIndex) {
@@ -29,7 +14,7 @@ function GameBoard({ onClickSquare, turns }) {
 
   return (
     <>
-      {gameBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         <li className="rows" key={rowIndex}>
           {row.map((playerSymbol, colIndex) => (
             <ol key={colIndex} className="columns">

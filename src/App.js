@@ -2,7 +2,13 @@ import { useState } from "react";
 import PlayerInfo from "./Components/PlayerInfo/PlayerInfo.jsx";
 import GameBoard from "./Components/GameBoard/GameBoard.jsx";
 import Log from "./Components/Log/Log.jsx";
-import { WINING_COMBINATIONS } from "./winingCombination.js";
+import { WINNING_COMBINATIONS } from "./winingCombination.js";
+
+const InitialGameBoard = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null],
+];
 
 function deriveActivePlayer(turns) {
   let currPlayer = "×";
@@ -18,6 +24,32 @@ function App() {
   // const [activePlayer, setActivePlayer] = useState("×");
 
   const activePlayer = deriveActivePlayer(turns);
+
+  let gameBoard = InitialGameBoard;
+
+  let winner = null;
+
+  for (const turn of turns) {
+    const { square, player } = turn;
+    const { row, col } = square;
+
+    gameBoard[row][col] = player;
+  }
+
+  for (const combination of WINNING_COMBINATIONS) {
+    const firstSquare = gameBoard[combination[0].row][combination[0].column];
+    const secondSquare = gameBoard[combination[1].row][combination[1].column];
+    const thirdSquare = gameBoard[combination[2].row][combination[2].column];
+
+    if (
+      firstSquare &&
+      firstSquare === secondSquare &&
+      firstSquare === thirdSquare
+    ) {
+      winner = firstSquare;
+      alert(winner + " won");
+    }
+  }
 
   function handleActivePlayer(rowIndex, colIndex) {
     // setActivePlayer((prev) => {
@@ -53,7 +85,7 @@ function App() {
         </div>
 
         <div className="game-board">
-          <GameBoard onClickSquare={handleActivePlayer} turns={turns} />
+          <GameBoard onClickSquare={handleActivePlayer} board={gameBoard} />
         </div>
       </main>
       <div class="logContainer">
