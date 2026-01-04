@@ -1,5 +1,6 @@
 .game-board {
   padding: 5rem;
+  position: relative;
 }
 
 .rows {
@@ -32,6 +33,16 @@
   border-top: 6px solid #4dbbe7;
 }
 
+.disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5 !important;
+  background-color: none !important;
+}
+
+.columns.disabled:hover {
+  background-color: transparent !important;
+}
+
 .columns {
   height: 8.2rem;
   width: 8.2rem;
@@ -44,7 +55,6 @@
 }
 
 .columns button {
-  cursor: pointer;
   color: #4dbbe7;
   background-color: transparent;
   border: none;
@@ -52,8 +62,50 @@
   width: 100%;
   font-size: 4.2rem;
   font-weight: 700;
+  cursor: pointer;
 }
 
 li {
   list-style: none;
 }
+
+.gameOverBtn {
+  background-color: #4dbbe7;
+  color: #fff;
+  border: none;
+  padding: 1.8rem 4rem;
+  font-size: 2.4rem;
+  text-transform: capitalize;
+  border-radius: 1.6rem;
+  cursor: pointer;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  white-space: nowrap;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  display: none;
+}
+
+.gameOverBtn:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.gameOverBtn.show {
+  display: flex;
+  animation: bigBounce 0.2s linear;
+}
+
+@keyframes bigBounce {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* button {
+  cursor: url("../../../public/cursor.png") 35 35, auto !important;
+} */

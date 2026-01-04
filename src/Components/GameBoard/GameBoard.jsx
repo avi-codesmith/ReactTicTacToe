@@ -1,5 +1,10 @@
 import "./GameBoard.css";
-function GameBoard({ onClickSquare, board }) {
+
+function resetGame() {
+  window.location.reload();
+}
+
+function GameBoard({ onClickSquare, board, winner, draw }) {
   // const [gameBoard, setGameBoard] = useState(InitialGameBoard);
 
   // function handleGameboard(rowIndex, colIndex) {
@@ -17,10 +22,14 @@ function GameBoard({ onClickSquare, board }) {
       {board.map((row, rowIndex) => (
         <li className="rows" key={rowIndex}>
           {row.map((playerSymbol, colIndex) => (
-            <ol key={colIndex} className="columns">
+            <ol
+              key={colIndex}
+              className={winner || draw ? "columns disabled" : "columns"}
+            >
               <button
+                className={winner || draw ? "disabled" : undefined}
                 onClick={() => onClickSquare(rowIndex, colIndex)}
-                disabled={playerSymbol !== null}
+                disabled={playerSymbol !== null || winner}
               >
                 {playerSymbol}
               </button>
@@ -28,6 +37,12 @@ function GameBoard({ onClickSquare, board }) {
           ))}
         </li>
       ))}
+      <button
+        className={winner || draw ? "gameOverBtn show" : "gameOverBtn"}
+        onClick={resetGame}
+      >
+        play again!
+      </button>
     </>
   );
 }

@@ -53,7 +53,6 @@
   color: #ffffff;
   font-weight: bold;
   border-radius: 8px;
-  cursor: pointer;
   transition: all 0.3s ease;
   margin-right: 2rem;
   padding: 1rem;
@@ -67,4 +66,9 @@
 .activePlayer {
   background-color: rgba(181, 217, 246, 0.2);
   border-radius: 8px;
+}
+
+.disabled {
+  scale: 1 !important;
+  opacity: 0.5;
 }

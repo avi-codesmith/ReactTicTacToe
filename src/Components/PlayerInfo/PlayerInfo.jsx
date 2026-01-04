@@ -1,16 +1,11 @@
 import "./PlayerInfo.css";
 import { useState } from "react";
 
-const PlayerInfo = ({ IName, symbol, isActive }) => {
+const PlayerInfo = ({ symbol, isActive, pName, func, winner, draw }) => {
   const [editing, setEditing] = useState(false);
-  const [PlayerName, setPlayerName] = useState(IName);
 
   const handleClicking = () => {
     setEditing((editing) => !editing);
-  };
-
-  const handelChangeName = (event) => {
-    setPlayerName(event.target.value);
   };
 
   return (
@@ -18,15 +13,24 @@ const PlayerInfo = ({ IName, symbol, isActive }) => {
       <div className="player">
         {editing ? (
           <input
-            className="player-name input"
-            value={PlayerName}
-            onChange={handelChangeName}
+            className={
+              winner || draw
+                ? "player-name input disabled"
+                : "player-name input"
+            }
+            value={pName}
+            onChange={func}
+            disabled={winner || draw}
           />
         ) : (
-          <span className="player-name">{PlayerName}</span>
+          <span className="player-name">{pName}</span>
         )}
         <p className="player-symbol">{symbol}</p>
-        <button className="edit-btn" onClick={handleClicking}>
+        <button
+          className={winner || draw ? "edit-btn disabled" : "edit-btn"}
+          disabled={winner || draw}
+          onClick={handleClicking}
+        >
           {editing ? "Save" : "Edit"}
         </button>
       </div>
