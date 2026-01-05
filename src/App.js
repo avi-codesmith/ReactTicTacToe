@@ -28,9 +28,10 @@ function App() {
 
   const activePlayer = deriveActivePlayer(turns);
 
-  let gameBoard = InitialGameBoard;
+  let gameBoard = [...InitialGameBoard.map((array) => [...array])];
   let isWinFound = false;
   let draw = false;
+  let playerName;
   let heading = "Tic Tac Toe";
 
   for (const turn of turns) {
@@ -46,7 +47,7 @@ function App() {
     if (first && first === second && first === third) {
       isWinFound = true;
 
-      const playerName = first === "×" ? player1Name : player2Name;
+      playerName = first === "×" ? player1Name : player2Name;
       heading = `🎉 ${playerName} "${first}" has won! 🎉`;
 
       try {
@@ -57,7 +58,7 @@ function App() {
   }
   if (!isWinFound && turns.length === 9) {
     draw = true;
-    heading = "Game Over! It's a Draw 🤝";
+    heading = "🤝 Game Over! It's a Draw 🤝";
 
     try {
       looseSound.currentTime = 0;
@@ -84,6 +85,10 @@ function App() {
         ...prev,
       ];
     });
+  }
+
+  function playAgain() {
+    setTurns([]);
   }
 
   return (
@@ -122,6 +127,7 @@ function App() {
             board={gameBoard}
             winner={isWinFound}
             draw={draw}
+            replay={playAgain}
           />
         </div>
       </main>

@@ -1,10 +1,6 @@
 import "./GameBoard.css";
 
-function resetGame() {
-  window.location.reload();
-}
-
-function GameBoard({ onClickSquare, board, winner, draw }) {
+function GameBoard({ onClickSquare, board, winner, draw, replay }) {
   // const [gameBoard, setGameBoard] = useState(InitialGameBoard);
 
   // function handleGameboard(rowIndex, colIndex) {
@@ -39,9 +35,9 @@ function GameBoard({ onClickSquare, board, winner, draw }) {
       ))}
       <button
         className={winner || draw ? "gameOverBtn show" : "gameOverBtn"}
-        onClick={resetGame}
+        onClick={replay}
       >
-        play again!
+        let's play again!
       </button>
     </>
   );
