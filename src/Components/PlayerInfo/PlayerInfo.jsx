@@ -1,11 +1,20 @@
 import "./PlayerInfo.css";
 import { useState } from "react";
 
-const PlayerInfo = ({ symbol, isActive, pName, func, winner, draw }) => {
+const PlayerInfo = ({ symbol, isActive, winner, draw, IName, onChange }) => {
   const [editing, setEditing] = useState(false);
+  const [playerName, setPlayerName] = useState(IName);
 
   const handleClicking = () => {
     setEditing((editing) => !editing);
+    if (editing) {
+      onChange(symbol, playerName);
+      console.log(playerName);
+    }
+  };
+
+  const handlePlayerName = (event) => {
+    setPlayerName(event.target.value);
   };
 
   return (
@@ -18,12 +27,12 @@ const PlayerInfo = ({ symbol, isActive, pName, func, winner, draw }) => {
                 ? "player-name input disabled"
                 : "player-name input"
             }
-            value={pName}
-            onChange={func}
+            value={playerName}
+            onChange={handlePlayerName}
             disabled={winner || draw}
           />
         ) : (
-          <span className="player-name">{pName}</span>
+          <span className="player-name">{playerName}</span>
         )}
         <p className="player-symbol">{symbol}</p>
         <button

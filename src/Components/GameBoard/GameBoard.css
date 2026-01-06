@@ -89,7 +89,7 @@ li {
 }
 
 .gameOverBtn:hover {
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
 .gameOverBtn.show {
@@ -105,7 +105,3 @@ li {
     transform: translate(-50%, -50%) scale(1);
   }
 }
-
-/* button {
-  cursor: url("../../../public/cursor.png") 35 35, auto !important;
-} */

@@ -4,11 +4,31 @@ import GameBoard from "./Components/GameBoard/GameBoard.jsx";
 import Log from "./Components/Log/Log.jsx";
 import { WINNING_COMBINATIONS } from "./winingCombination.js";
 
-const InitialGameBoard = [
+let heading = "Tic Tac Toe";
+const winSound = new Audio("win.mp3");
+const looseSound = new Audio("loose.mp3");
+
+const PLAYER = {
+  "×": "Player 1",
+  o: "Player 2",
+};
+
+const INITIAL_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
 ];
+
+function deriveGameBoard(turns) {
+  let gameBoard = [...INITIAL_GAME_BOARD.map((array) => [...array])];
+
+  for (const turn of turns) {
+    const { row, col } = turn.square;
+    gameBoard[row][col] = turn.player;
+  }
+
+  return gameBoard;
+}
 
 function deriveActivePlayer(turns) {
   let currPlayer = "×";
@@ -18,26 +38,8 @@ function deriveActivePlayer(turns) {
   return currPlayer;
 }
 
-function App() {
-  const [turns, setTurns] = useState([]);
-  const [player1Name, setPlayer1Name] = useState("Player 1");
-  const [player2Name, setPlayer2Name] = useState("Player 2");
-
-  const winSound = new Audio("win.mp3");
-  const looseSound = new Audio("loose.mp3");
-
-  const activePlayer = deriveActivePlayer(turns);
-
-  let gameBoard = [...InitialGameBoard.map((array) => [...array])];
+function deriveWinner({ playerName, gameBoard }) {
   let isWinFound = false;
-  let draw = false;
-  let playerName;
-  let heading = "Tic Tac Toe";
-
-  for (const turn of turns) {
-    const { row, col } = turn.square;
-    gameBoard[row][col] = turn.player;
-  }
 
   for (const combination of WINNING_COMBINATIONS) {
     const first = gameBoard[combination[0].row][combination[0].column];
@@ -46,16 +48,18 @@ function App() {
 
     if (first && first === second && first === third) {
       isWinFound = true;
-
-      playerName = first === "×" ? player1Name : player2Name;
-      heading = `🎉 ${playerName} "${first}" has won! 🎉`;
-
+      heading = `${playerName[first]} "${first}" has won`;
       try {
         winSound.currentTime = 0;
         winSound.play();
       } catch (e) {}
     }
   }
+  return isWinFound;
+}
+
+function deriveDrawCondition({ isWinFound, turns }) {
+  let draw = false;
   if (!isWinFound && turns.length === 9) {
     draw = true;
     heading = "🤝 Game Over! It's a Draw 🤝";
@@ -65,17 +69,17 @@ function App() {
       looseSound.play();
     } catch (e) {}
   }
+  return draw;
+}
 
-  const handlePlayer1Name = (e) => setPlayer1Name(e.target.value);
-  const handlePlayer2Name = (e) => setPlayer2Name(e.target.value);
+function App() {
+  const [playerName, setPlayerName] = useState(PLAYER);
+  const [turns, setTurns] = useState([]);
 
-  // useEffect(() => {
-  //   localStorage.setItem("player1Name", player1Name);
-  // }, [player1Name]);
-
-  // useEffect(() => {
-  //   localStorage.setItem("player2Name", player2Name);
-  // }, [player2Name]);
+  const activePlayer = deriveActivePlayer(turns);
+  const gameBoard = deriveGameBoard(turns);
+  const isWinFound = deriveWinner({ playerName, gameBoard });
+  const draw = deriveDrawCondition({ isWinFound, turns });
 
   function handleActivePlayer(rowIndex, colIndex) {
     setTurns((prev) => {
@@ -89,6 +93,16 @@ function App() {
 
   function playAgain() {
     setTurns([]);
+    heading = "Tic Tac Toe";
+  }
+
+  function handlePlayerName(symbol, newName) {
+    setPlayerName((prev) => {
+      return {
+        ...prev,
+        [symbol]: newName,
+      };
+    });
   }
 
   return (
@@ -101,23 +115,21 @@ function App() {
       <main>
         <div className="game-container active-player">
           <PlayerInfo
-            IName="Player 1"
+            IName={PLAYER["×"]}
             symbol="×"
             isActive={activePlayer === "×"}
-            pName={player1Name}
-            func={handlePlayer1Name}
             winner={isWinFound}
             draw={draw}
+            onChange={handlePlayerName}
           />
 
           <PlayerInfo
-            IName="Player 2"
             symbol="o"
+            IName={PLAYER["o"]}
             isActive={activePlayer === "o"}
-            pName={player2Name}
-            func={handlePlayer2Name}
             winner={isWinFound}
             draw={draw}
+            onChange={handlePlayerName}
           />
         </div>
 
