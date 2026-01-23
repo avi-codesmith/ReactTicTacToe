@@ -108,7 +108,7 @@ function App() {
   return (
     <>
       <header>
-        <img src="game.png" />
+        <img src="game.png" alt="Game logo" />
         <h1>{heading}</h1>
       </header>
 
